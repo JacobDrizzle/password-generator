@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: rgba(34,34,34,1);
+    background-color: #00121e;
     margin: 20px;
     color: white;
     width: 280px;
@@ -28,27 +28,32 @@ body {
 
   .input-box{
     margin: 10px 0px 10px 0px;
+    display: flex;
   }
 
   input {
-    background: 0;
+    background-color: #082335;
     color: white;
     border: 0;
-    border-bottom: 1px solid grey;
+    border: 1px solid #64ade6;
+    border-radius: 5px;
     outline: none;
+    padding: 5px;
     width: 70%;
     font-size: 1.2em;
+  }
+
+  #tag-input{
     transition: padding 0.3s 0.2s ease, border-color 0.3s 0.2s ease, border-bottom 0.2s 0.2s ease;
-  
     &:hover{
       border-bottom: 2px solid;
-      padding-bottom: 5px;
+      padding-bottom: 8px;
       border-color: #1abc9c;
     }
   
     &:focus {
       border-bottom: 2px solid;
-      padding-bottom: 5px;
+      padding-bottom: 8px;
       border-color: #1abc9c;
     }
   
@@ -58,37 +63,74 @@ body {
       }
     }
   }
+
   .verify-input{
     font-size: 1.5em;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 5px 10px;
     margin-bottom: 15%;
     margin-top: 35%;
-  }
-  #generated-password {
-    width: 100%;
-    margin: 10px 0;
-    padding: 5px;
-  }
-  .generate-box{
-    display: flex;
-    .generate-btn{
-      height: 30px;
-      width: 30px;
-      margin-top: 15px;
-      margin-left: 30px;
-      align-items: center;
-      border-radius: 5px;
-      background-color: rgba(255,255,255,0.2);
-      .refresh{
-        width: 15px;
-        height: 15px;
+    transition: padding 0.3s 0.2s ease, border-color 0.3s 0.2s ease, border-bottom 0.2s 0.2s ease;
+  
+    &:hover{
+      border-bottom: 2px solid;
+      padding-bottom: 8px;
+      border-color: #1abc9c;
+    }
+  
+    &:focus {
+      border-bottom: 2px solid;
+      padding-bottom: 8px;
+      border-color: #1abc9c;
+    }
+  
+    &:focus + .line {
+      &:after {
+        transform: scaleX(1);
       }
     }
   }
+
+  .generate-box{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .generated-input{
+    width: 200px;
+    margin-left: 10px;
+  }
+  .generate-btn{
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  .refresh{
+    width: 18px;
+    height: 20px;
+  }
+  #save-btn{
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #1abc9c;
+    color: white;
+  }
+
   button {
     padding: 5px;
     border-radius: 5px;
   }
+
   .verify-btn{
     padding: 15px;
     border: 1px solid #171717;
@@ -100,6 +142,7 @@ body {
       border: 1px solid #34d399;
     }
   }
+
   .button-box{
     margin-top: 10px;
     display: flex;
@@ -111,42 +154,81 @@ body {
     color: green;
   }
 
+  #save-to-file-btn{
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.2);
+    .save-icon{
+      margin-left: -1px;
+      margin-top: -1px;
+    }
+  }
+
+  #retrieve-btn{
+    background-color: #3498db;
+    color: white;
+  }
+  
   .verify-message{
     margin-top: 10px;
   }
+
+  .retrieved-passwords {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    font-size: 1.1em;
+  }
+  #password-title{
+    margin-top: -20px;
+  }
   .password-item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: transform 0.3s ease-in-out, white-space 0s ease-in-out 0.3s;
+    cursor: pointer;
+    position: relative;
   }
   
-  .tag {
+  .password-item:hover {
+    transform: scale(1.05);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, white-space 0s ease-in-out 0s;
+    white-space: normal;
+  }
+  
+  .password-item:hover .password-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .password-item .tag {
     font-weight: bold;
     color: #3498db;
-    margin-bottom: 5px;
-    left: 0;
-    position: absolute;
   }
   
   .password-container {
-    display: flex;
-    align-items: center;
+    display: none;
   }
   
   .password {
     border: none;
     background: none;
-    font-size: 1em;
     color: #e74c3c;
-    margin-right: 10px;
-    flex-grow: 1;
+    margin-top: 5px;
   }
   
   .toggle-btn, .copy-btn {
-    margin-left: 5px;
+    margin-top: 5px;
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
@@ -166,3 +248,50 @@ body {
   .copy-btn:focus, .toggle-btn:focus {
     outline: none;
   }
+
+
+/* -------------------- TOOLTIP STYLES -------------------- */
+
+  /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  white-space: nowrap; /* Ensure text is all in one line */
+  width: fit-content;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 125%; /* Position below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+/* Show the tooltip text when hovering over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/* -------------------- TOOLTIP STYLES -------------------- */

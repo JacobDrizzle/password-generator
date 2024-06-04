@@ -3,7 +3,7 @@
   "name": "Password Generator",
   "description": "A simple Chrome extension to generate and save unique passwords.",
   "version": "1.0",
-  "permissions": ["tabs", "storage", "activeTab"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
