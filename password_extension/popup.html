@@ -10,7 +10,7 @@
     <div id="master-password-setup">
       <div class="title-box">
         <h1 class="title">Master Lock</h1>
-        <img class="title-logo" src="icons/icon48.png" alt="Logo" />
+        <img class="title-logo" src="icon48.png" alt="Logo" />
       </div>
       <div class="title-input-box">
         <input
@@ -28,7 +28,7 @@
     <div id="app" style="display: none">
       <div class="title-box">
         <h1 class="title">Master Lock</h1>
-        <img class="title-logo" src="icons/icon48.png" alt="Logo" />
+        <img class="title-logo" src="icon48.png" alt="Logo" />
       </div>
       <input
         type="password"
@@ -74,7 +74,7 @@
             </g>
           </svg>
         </button>
-        <button id="delete-passwords-btn" style="display: none">X</button>
+        <button id="delete-btn" style="display: none" data-tooltip="Delete Passwords">X</button>
       </div>
       <div class="generate-box">
         <div class="input-box">
@@ -126,8 +126,8 @@
       <div class="button-box">
         <div id="message"></div>
       </div>
+      <h1 id="password-title" style="display: none">Passwords:</h1>
       <div id="retrieved-passwords" class="retrieved-passwords">
-        <h1 id="password-title" style="display: none">Passwords:</h1>
       </div>
     </div>
     <script type="module" src="popup.js"></script>
